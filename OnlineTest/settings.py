@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'useraccount',
     'courseapp',
+    'home', #used for storing base template and static files
 ]
 
 MIDDLEWARE = [
