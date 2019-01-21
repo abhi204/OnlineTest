@@ -49,4 +49,33 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+class SignUpForm(UserCreationForm):
+    full_name = forms.CharField(max_length=255,required=True)
+    mobile = forms.IntegerField(max_value=10**10,min_value=10**9,required=True)
+    email = forms.EmailField(widget=forms.widgets.EmailInput,required=True)
+    department = forms.CharField(max_length=255,required=True)
+    college = forms.CharField(max_length=255,required=True)
+    sem = forms.IntegerField(min_value=1,max_value=8,required=True)
+
+    class Meta:
+        model = User
+        fields = ['full_name','mobile','email','department','college','sem']
+
+    '''
+    @transaction.atomic to make sure those three operations are done in a single
+    database transaction and avoid data inconsistencies
+    in case of error.
+    '''
+    @transaction.atomic
+    def save(self):
+        user = self.instance
+        user.set_password(self.cleaned_data['password1'])
+        user.save()
+        # student = Student.objects.create(
+        #     user = user,
+        #     usn = self.cleaned_data['usn'],
+        #     year = self.cleaned_data['year'],
+        #     cr = self.cleaned_data['cr']
+        #     )
+        return user
 
