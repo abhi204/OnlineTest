@@ -1,0 +1,85 @@
+{%extends 'base.html'%}
+{%block title%} Courses {%endblock%}
+
+{%block body%}
+<main role="main" class="flex-shrink-0">
+        <div class="container text-center">
+          <h1 class="test-underline text-dark "><b>COURSES</b> <a><i class="fas fa-plus icon-test pull-right" data-toggle="modal" data-target="#newCourseModal"></i></a></h1>
+      
+        <!-- Modal -->
+        <div class="modal fade" id="newCourseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form>
+              <div class="modal-body">
+                
+                  <div class="form-group">
+                    <label for="courseName">Add a new course:</label>
+                    <input type="test" class="form-control" id="courseName" placeholder="Enter the new course">
+                  </div>
+                  
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                
+              </div>
+              </form>
+            </div>
+      
+          </div>
+        </div>
+        </div>
+      
+        <div class="container">
+          <ul class="list-group list-test ">
+            
+            <li type="button" class="list-group-item list-group-item-action mb-3">
+            <div class="row">
+            <div class="col-10">
+              Some Question
+            </div>
+            <div class="col-1">
+            <i class="fas fa-pen" data-toggle="modal" data-target="#editCourseModal"></i>
+            </div>
+            <div class="col-1">
+            <i class="fas fa-trash"></i>
+            </div>
+            </div>
+            </li>
+          </ul>
+      
+          <div class="modal fade" id="editCourseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form>
+              <div class="modal-body">
+                
+                  <div class="form-group">
+                    <label for="courseName">Edit the course name:</label>
+                    <input type="test" class="form-control" id="courseName" placeholder="Enter the new course">
+                  </div>
+                  
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                
+              </div>
+              </form>
+            </div>
+      
+          </div>
+        </div>
+      </main>      
+{%endblock%}
