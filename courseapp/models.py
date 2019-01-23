@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class CourseModel(models.Model):
-    id = models.CharField(max_length=10, primary_key=True, verbose_name="Course ID")
+    c_id = models.CharField(max_length=10, primary_key=True, verbose_name="Course ID")
     name = models.CharField(max_length=100, unique=True, verbose_name="Course Name")
     content = models.CharField(max_length=255, verbose_name="Course Content")
 
@@ -15,7 +15,7 @@ class CourseModel(models.Model):
         return self.name
 
 class QuestionModel(models.Model):
-    id = models.CharField(max_length=10, primary_key=True, verbose_name="Question ID")
+    q_id = models.CharField(max_length=10, primary_key=True, verbose_name="Question ID")
     question = models.CharField(max_length=255)
     course = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
     answer = models.CharField(max_length=255, blank=False,)
@@ -28,7 +28,7 @@ class QuestionModel(models.Model):
 
     @property
     def qtype(self):
-        if len(McqQuestionModel.objects.filter(id=self.id)):
+        if len(McqQuestionModel.objects.filter(pk=self.pk)):
             return "mcq"
         return "sub"
 
