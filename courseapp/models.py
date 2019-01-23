@@ -26,16 +26,17 @@ class QuestionModel(models.Model):
     def __str__(self):
         return self.question
 
+    @property
+    def qtype(self):
+        if len(McqQuestionModel.objects.filter(id=self.id)):
+            return "mcq"
+        return "sub"
+
 class SubQuestionModel(QuestionModel):
     
     class Meta:
         verbose_name = "Subjective Question"
         verbose_name_plural = "Subjective Questions"
-
-
-    @property
-    def qtype(self):
-        return 'sub'
 
 
 class McqQuestionModel(QuestionModel):
@@ -44,10 +45,7 @@ class McqQuestionModel(QuestionModel):
     opt_c = models.CharField(max_length=255, blank=False, verbose_name="Option C")
     opt_d = models.CharField(max_length=255, blank=False, verbose_name="Option D")
 
+
     class Meta:
         verbose_name = "MCQ Question"
         verbose_name_plural = "MCQ Questions"
-
-    @property
-    def qtype(self):
-        return 'mcq'
