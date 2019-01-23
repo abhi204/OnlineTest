@@ -11,7 +11,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Course</h5>
+                <h5 class="modal-title" id="addModalLabel">New Course</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,9 +20,14 @@
               <div class="modal-body">
                 
                   <div class="form-group">
-                    <label for="courseName">Add a new course:</label>
-                    <input type="test" class="form-control" id="courseName" placeholder="Enter the new course">
+                    <label for="addCourseName">Add a new course:</label>
+                    <input type="test" class="form-control" id="addCourseName" placeholder="Enter the new course">
                   </div>
+                  <div class="form-group text-left">
+                    <label for="addCourseName">Enter the Course Content:</label>
+                    <textarea type="test" class="form-control" id="addCourseContent" placeholder="Enter the course content"></textarea>
+                  </div>
+
                   
               </div>
               <div class="modal-footer">
@@ -58,7 +63,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
+                <h5 class="modal-title" id="editeModalLabel">Edit Course</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -67,8 +72,12 @@
               <div class="modal-body">
                 
                   <div class="form-group">
-                    <label for="courseName">Edit the course name:</label>
-                    <input type="test" class="form-control" id="courseName" placeholder="Enter the new course">
+                    <label for="editcourseName">Edit the course name:</label>
+                    <input type="test" class="form-control" id="editCourseName" placeholder="Enter the new course">
+                  </div>
+                  <div class="form-group text-left">
+                    <label for="editcourseName">Enter the Course Content:</label>
+                    <textarea type="test" class="form-control" id="editCourseContent" placeholder="Enter the course content"></textarea>
                   </div>
                   
               </div>

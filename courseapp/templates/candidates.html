@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block title%} Courses {%endblock%}
+
+{%block body%}
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container text-center">
+    <h1 class="test-underline text-dark "><b>CANDIDATES</b></h1>
+  </div>
+  <div class="container">
+    <table class="table table-hover table-candidates">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Candidate Name</th>
+          <th scope="col">Course/Technology</th>
+          <th scope="col">Score</th>
+          <th scope="col">Test Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Yash Gupta</td>
+          <td>Android</td>
+          <td>2.6</td>
+          <td>16-01-2016</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+{%endblock%}

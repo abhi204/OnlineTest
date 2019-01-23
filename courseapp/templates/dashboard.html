@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block title%} Dashboard{%endblock%}
+
+{%block body%}
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a class="" href='{% url "course_list" %}'><div class="card text-center p-5 shadow-lg card-dashboard">
+          <i class="fas fa-book-open fa-10x" ></i>
+          <div class="card-body">
+           <h2>Courses</h2>
+          </div>
+        </div></a>
+      </div>
+      <div class="col">
+        <a class="" href='{% url "candidate_list" %}'><div class="card text-center p-5 shadow-lg card-dashboard">
+          <i class="fas fa-users fa-10x" ></i>
+          <div class="card-body">
+           <h2>Candidates</h2>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</main>
+{%endblock%}
