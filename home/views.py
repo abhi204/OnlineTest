@@ -9,7 +9,7 @@ decorators = [login_required, admin_required]
 
 @method_decorator(decorators, name='get')
 class DashBoardView(TemplateView):
-    template_name = "dashboard.html"
+    template_name = "home/dashboard.html"
 
     def get(self,request):
         return render(request,self.template_name)
