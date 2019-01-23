@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 import useraccount
 import courseapp
+import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('useraccount/',include('useraccount.urls')),
     path('course/',include('courseapp.urls')),
+    path('',include('home.urls')),
 ]
