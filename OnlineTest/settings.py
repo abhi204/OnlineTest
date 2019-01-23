@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'useraccount',
     'courseapp',
+    'questionapp',
     'home', #used for storing base template and static files
 ]
 
