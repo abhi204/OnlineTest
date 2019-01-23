@@ -14,19 +14,18 @@ from .forms import SignUpForm
 
 
 # Create your views here.
-# def login_view(request):
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-#         user = authenticate(request,username=username,password=password)
-#         if user is not None:
-#             django_login(request,user)
-#             return HttpResponse(**SUCCESS_RESPONSE)
-#         else:
-#             #change below to response=error, error = Invalid login creds
-#             return HttpResponse(json.dumps({'response':'Invalid Login Credentials'}),content_type="application/json")
-#     else:
-#         return redirect('index')
+def admin_login_view(request):
+    if request.method == 'POST':
+        mobile = request.POST['mobile']
+        password = request.POST['password']
+        user = authenticate(request,mobile=mobile,password=password)
+        if user is not None and user.is_admin:
+            django_login(request,user)
+            return HttpResponse(**SUCCESS_RESPONSE)
+        else:
+            return HttpResponse(json.dumps({'error':'Invalid Login Credentials'}),content_type="application/json")
+    else:
+        return redirect('homepage')
 
 def signup_view(request):
     if request.method == "POST":
