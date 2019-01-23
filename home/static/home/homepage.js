@@ -20,7 +20,7 @@ async function doAdminLogin() {
         // Do Something on successful account initialization 
         //(verification still pending)
         window.alert("SUCCESS!!!");
-        window.location = "/course/dashboard";
+        window.location = "/dashboard";
     } 
     else if(adminLoginResponse.error)
     {
