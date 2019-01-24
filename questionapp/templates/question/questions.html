@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Online Test{% endblock %}
+
+{% block body %}
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container text-center">
+    <h1 class="test-underline text-dark "><b>QUESTIONS</b> <a><i class="fas fa-plus icon-test pull-right" data-toggle="modal" data-target="#newQuestionModal"></i></a></h1>
+
+  <!-- Modal -->
+  <div class="modal fade" id="newQuestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Question</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+        <div class="modal-body">
+          
+            <div class="form-group">
+              <label for="courseName">Enter the question:</label>
+              <textarea type="text" class="form-control mb-1" placeholder="Question.."></textarea>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 1">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 2">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 3">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 4">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Answer">
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="container">
+    <ul class="list-group list-test ">
+      {% for question in questions %}
+      {% if question.qtype == 'mcq' %}
+      <li id="{{question.q_id}}" type="button" class="list-group-item list-group-item-action mb-3" data-question="{{question.question}}" data-answer="{{question.answer}}" data-optA="{{question.mcqquestionmodel.opt_a}}" data-optB="{{question.mcqquestionmodel.opt_b}}" data-optC="{{question.mcqquestionmodel.opt_c}}" data-optD="{{question.mcqquestionmodel.opt_d}}" data-qtype="{{question.qtype}}">
+      {% else %}
+      <li id="{{question.q_id}}" type="button" class="list-group-item list-group-item-action mb-3" data-question="{{question.question}}" data-answer="{{question.answer}}" data-qtype="{{question.qtype}}">
+      {% endif %}
+      <div class="row">
+      <div class="col-10">
+        {{ question.question }}
+      </div>
+      <div class="col-1">
+      <i class="fas fa-pen" data-toggle="modal" data-target="#editQuestionModal" onclick="editQ('{{question.q_id}}')"></i>
+      </div>
+      <div class="col-1">
+      <i class="fas fa-trash"></i>
+      </div>
+      </div>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="modal fade" id="editQuestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Question</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST">
+        <div class="modal-body">
+          
+            <div class="form-group">
+              <label for="courseName">Edit the question:</label>
+              {% csrf_token %}
+              <input type="hidden" name="method" value="PUT">
+              <input type="hidden" name="course" value="{{course}}">
+              <input type="text" style="display: none" name="q_id" id="edit_qid" />
+              <input type="text" style="display: none" name="qtype" id="edit_qtype" />
+              <input type="text" class="form-control mb-1" placeholder="Question.." name="question" id="editQuestion" required>
+              <div id="editOptions">
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 1" name="opt_a" id="editOptA" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 2" name="opt_b" id="editOptB" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 3" name="opt_c" id="editOptC" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control mb-1" placeholder="Option 4" name="opt_d" id="editOptD" required>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="answer" placeholder="Answer" id="editAns" required>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        </div>
+      </div>
+  </div>
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'question/questions.js' %}"></script>
+{% endblock %}
