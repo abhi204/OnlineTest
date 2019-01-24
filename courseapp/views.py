@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import CourseForm
 from .models import CourseModel
 from django.http import HttpResponse
+from testapp.models import TestModel
+from useraccount.models import User
 # Create your views here.
 @login_required
 @admin_required
@@ -41,8 +43,16 @@ def course_edit_view(request):
 @login_required
 @admin_required
 def candidate_list_view(request):
+    test_details = TestModel.objects.order_by('-test_start_time')
     if request.method == 'GET':
-        return render(request,"candidates.html")
+        return render(request, "candidates.html", {"test_details": test_details})
+
+@login_required
+@admin_required
+def candidate_details_view(request, candidate_email):
+    candidate = User.objects.get(pk=candidate_email)
+    return render(request, "candidate_details.html", {"candidate": candidate})
+
 
 @login_required
 @admin_required
