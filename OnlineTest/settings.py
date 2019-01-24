@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'useraccount',
     'courseapp',
     'questionapp',
+    'testapp',
     'home', #used for storing base template and static files
 ]
 
