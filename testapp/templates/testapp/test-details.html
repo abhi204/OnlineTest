@@ -22,7 +22,7 @@
               <h5><b>TEST CONTENT:</b></h5>
               {{ course.content | linebreaks }}
               <br>
-              <button type="button" class="btn btn-success btn-lg mt-2">Start The Test</button>
+              <button type="button" class="btn btn-success btn-lg mt-2" onclick="window.location = '/test/{{course.name}}'">Start The Test</button>
             </div>
           </div>
         </div>
