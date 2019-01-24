@@ -37,7 +37,7 @@ def take_test(request, course_name):
 @login_required
 def get_questions(request,course_name):
     if request.method == "GET":
-        sub_questions_all = list(SubQuestionModel.objects.values('question', 'q_id'))
+        sub_questions_all = list(SubQuestionModel.objects.values('question', 'q_id').filter(course_id=course_name))
         mcq_questions_all = list(McqQuestionModel.objects.values(
             'question',
             'q_id',
@@ -45,7 +45,7 @@ def get_questions(request,course_name):
             'opt_b',
             'opt_c',
             'opt_d',
-        ))
+        ).filter(course_id=course_name))
         all_questions = mcq_questions_all
         all_questions.extend(sub_questions_all)
         questions_random = random.sample(all_questions,30 if len(all_questions)>30 else len(all_questions))
