@@ -50,9 +50,9 @@
           <ul class="list-group list-test ">
 
             {% for course in courses %}
-            <li type="button" class="list-group-item list-group-item-action mb-3" data-name="{{ course.name }}" onclick="gotoCourse('{{ course.name }}')">
+            <li type="button" class="list-group-item list-group-item-action mb-3" data-name="{{ course.name }}" >
               <div class="row">
-              <div class="col-10">
+              <div class="col-10 click-icon" onclick="gotoCourse('{{ course.name }}')">
                 {{ course.name }}
               </div>
               <div class="col-1">
