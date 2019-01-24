@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Test - {{ course.name }} {% endblock %}
+
+{% block body %}
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container text-center">
+    <h1 class="test-underline text-dark "><b>TEST DETAILS</b></h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div id="card-candidate-details" class="card shadow">
+          <div class="card-header">
+            <h3><i class="fas fa-book"></i><b><span> Course/Technology</span></b></h3>
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <h5><b>TEST DESCRIPTION:</b></h5>
+              <p>This test is about 40 multiple choice questions and should take less than 40 minutes to complete.</p>
+              <h5><b>TEST CONTENT:</b></h5>
+              {{ course.content | linebreaks }}
+              <br>
+              <button type="button" class="btn btn-success btn-lg mt-2" onclick="window.location = '/test/{{course.name}}'">Start The Test</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block script %}{% endblock %}
