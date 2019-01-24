@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block title%} Courses {%endblock%}
+
+{%block body%}
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container text-center">
+    <h1 class="test-underline text-dark "><b>CANDIDATE DETAILS</b></h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div id="card-candidate-details" class="card shadow">
+          <div class="card-header">
+            <h3><i class="fas fa-user"></i><b><span> {{ candidate.full_name }}</span></b></h3>
+          </div>
+          <div id="candidate-details-card-body" class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item"><b>Name: </b> <span>{{ candidate.full_name }}</span></li>
+              <li class="list-group-item"><b>Phone: </b> <span>{{ candidate.mobile }}</span></li>
+              <li class="list-group-item"><b>Email: </b> <span>{{ candidate.email }}</span></li>
+              <li class="list-group-item"><b>College: </b> <span>{{ candidate.college }}</span></li>
+              <li class="list-group-item"><b>Department: </b> <span>{{ candidate.department }}</span></li>
+              <li class="list-group-item"><b>Semester: </b> <span>{{ candidate.sem }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{%endblock%}

@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-{%block title%} Courses {%endblock%}
+{%block title%} Candidates {%endblock%}
 
 {%block body%}
 <!-- Begin page content -->
@@ -8,7 +8,7 @@
     <h1 class="test-underline text-dark "><b>CANDIDATES</b></h1>
   </div>
   <div class="container">
-    <table class="table table-hover table-candidates">
+    <table class="table table-hover table-striped table-candidates">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -19,15 +19,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Yash Gupta</td>
-          <td>Android</td>
-          <td>2.6</td>
-          <td>16-01-2016</td>
+        {% for test in test_details %}
+        <tr onclick="gotoCandidate('{{ test.candidate.email }}')" >
+          <th scope="row"></th>
+          <td>{{ test.candidate.full_name }}</td>
+          <td>{{ test.course }}</td>
+          <td>{{ test.score }}</td>
+          <td>{{ test.test_start_time }}</td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
 </main>
+
+<script>
+
+  function gotoCandidate(candidate_email){
+  window.location = `/course/candidate/${candidate_email}`;
+  };
+
+</script>
 {%endblock%}
