@@ -2,6 +2,7 @@ let course_questions = [];
 let current = 0;
 let answers = []
 let answer = '';
+let submitResponse = null;
 
 let progressElement = document.querySelector("#progress");
 let questionElement = document.querySelector("#question");
@@ -54,7 +55,7 @@ function nextQ(){
     answer = '';
     
     if(current === course_questions.length){
-        console.log(answers)
+        submitAnswers();
         return;
     }
     increaseProgress(current,course_questions.length);
@@ -93,3 +94,24 @@ async function getQuestions(questions){
     };
 
 getQuestions(course_questions);
+
+//Submit Answers to Server
+async function submitAnswers(){
+    await fetch(
+        '/test/Course B',
+        {   method: "POST",
+            body: JSON.stringify(answers),
+            headers: {"Content-Type": "application/json",}
+        }).then(resp => resp.json())
+        .then(data => submitResponse = data)
+        .catch(error =>{
+            window.alert("Unknown Error Occured");
+            console.log(error);
+        })
+    if(submitResponse.response === 'success'){
+        window.alert("TEST COMPLETE");
+    }
+    else{
+        window.alert(submitResponse.response);
+    }
+}
