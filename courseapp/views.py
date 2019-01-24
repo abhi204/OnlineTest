@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from useraccount.decorators import admin_required
 from django.contrib.auth.decorators import login_required
 from .forms import CourseForm
 from .models import CourseModel
-
+from django.http import HttpResponse
 # Create your views here.
 @login_required
 @admin_required
@@ -23,8 +23,29 @@ def course_list_view(request):
     return render(request, "courses.html", {"courses": courses})
 
 
+def course_edit_view(request):
+    if request.method == 'POST':
+        instance = CourseModel.objects.get(name=request.POST['name'])
+        course_edit_form= CourseForm(request.POST, instance=instance)
+        if course_edit_form.is_valid():
+            course_edit_form.save()
+            return redirect('course_list')
+        else:
+            print(f"errors : {course_edit_form.errors}")
+            return render(request, "courses.html", {
+                "errors": course_edit_form.errors,
+            })
+
+
 @login_required
 @admin_required
 def candidate_list_view(request):
     if request.method == 'GET':
         return render(request,"candidates.html")
+
+@login_required
+@admin_required
+def course_delete(request,course_name):
+    instance = CourseModel.objects.get(name=course_name)
+    instance.delete()
+    return redirect('course_list')
