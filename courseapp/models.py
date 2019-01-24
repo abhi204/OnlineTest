@@ -4,7 +4,7 @@ from useraccount.models import User
 
 class CourseModel(models.Model):
     name = models.CharField(max_length=100, primary_key=True, verbose_name="Course Name")
-    content = models.CharField(max_length=255, verbose_name="Course Content")
+    content = models.TextField(verbose_name="Course Content")
 
     class Meta:
         verbose_name = "Course"
