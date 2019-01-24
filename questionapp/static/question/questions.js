@@ -18,3 +18,11 @@ function editQ(q_id){
       document.querySelector("#editOptions").style.display = 'none';
     }
   };
+  
+
+let newOptions = document.querySelector("#newOptions");
+
+
+function visibleOptions(value){
+  newOptions.style.display = value;
+}
