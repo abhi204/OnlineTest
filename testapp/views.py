@@ -29,13 +29,15 @@ def take_test(request, course_name):
     if request.method == "GET":
         instance, created = TestModel.objects.get_or_create(
             course_id=course_name,
-            candidate_id=request.user.email)
-        if created:
-            instance.save()
-        else:
+            candidate_id=request.user.email,
+            defaults={
+                "candidate_id": request.user.email,
+                "course_id": course_name,
+            })
+        if not created:
             instance.test_start_time = timezone.now()
             instance.score = 0
-            instance.save()
+        instance.save()
         return render(request, "testapp/test.html", {"course": course_name})
     if request.method == "POST":
         answers = json.loads(request.body)
