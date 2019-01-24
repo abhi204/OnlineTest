@@ -5,6 +5,7 @@ from .models import (
     QuestionModel,
     McqQuestionModel,
     SubQuestionModel,
+    TestModel,
     )
 # Register your models here.
 
@@ -15,3 +16,4 @@ admin.site.register(CourseModel, CourseAdmin)
 admin.site.register(QuestionModel, CourseAdmin)
 admin.site.register(McqQuestionModel, CourseAdmin)
 admin.site.register(SubQuestionModel, CourseAdmin)
+admin.site.register(TestModel, CourseAdmin)
