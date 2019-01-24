@@ -43,19 +43,19 @@ def take_test(request, course_name):
         answers = json.loads(request.body)
         instance, created = TestModel.objects.get_or_create(course_id=course_name, candidate_id=request.user.email)
         if created:
-            raise JsonResponse({"response": "Operation Not Allowed"})
+            return JsonResponse({"response": "Operation Not Allowed"})
         #check time (raise error if fail)
         start_time = instance.test_start_time
         current_time = timezone.now()
         if current_time - start_time > timedelta(seconds=1830):
-            raise JsonResponse({"response":"Time Limit Exceeded"})
+            return JsonResponse({"response":"Time Limit Exceeded"})
         #do evaluation
         score = get_score(answers)
         #store in db
         instance.score = score
         instance.save()
         #redirect to score page (if permits)
-        return JsonResponse({"response": "success"})
+        return JsonResponse({"response": "success", "score": score })
 
 @login_required
 def get_questions(request,course_name):

@@ -109,7 +109,7 @@ async function submitAnswers(){
             console.log(error);
         })
     if(submitResponse.response === 'success'){
-        window.alert("TEST COMPLETE");
+        window.alert(`Your Score is:${submitResponse.score}`);
     }
     else{
         window.alert(submitResponse.response);

@@ -8,7 +8,7 @@ def get_score(answers):
             question = QuestionModel.objects.get(q_id=answer['q_id'])
         except QuestionModel.DoesNotExist:
             raise JsonResponse({"response": "Question Does Not Exist"})
-        if answer == question.answer:
+        if answer['answer'] == question.answer:
             score+=2
         else:
             score-=1
