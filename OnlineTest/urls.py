@@ -16,10 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-import useraccount
-import courseapp
-import home
-import questionapp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +23,6 @@ urlpatterns = [
     path('course/',include('courseapp.urls')),
     path('',include('home.urls')),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='home/index.html')),
-    path('question/',include('questionapp.urls'))
+    path('question/',include('questionapp.urls')),
+    path('test/',include('testapp.urls'))
 ]
