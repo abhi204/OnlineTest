@@ -98,7 +98,7 @@ getQuestions(course_questions);
 //Submit Answers to Server
 async function submitAnswers(){
     await fetch(
-        '/test/Course B',
+        `/test/${course_name}`,
         {   method: "POST",
             body: JSON.stringify(answers),
             headers: {"Content-Type": "application/json",}
