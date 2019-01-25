@@ -110,6 +110,7 @@ async function submitAnswers(){
         })
     if(submitResponse.response === 'success'){
         window.alert(`Your Score is:${submitResponse.score}`);
+        window.location= `/test/result/${course_name}`;
     }
     else{
         window.alert(submitResponse.response);
@@ -138,3 +139,5 @@ window.onload = function () {
     display = document.querySelector('#test_timer');
     startTimer(Minutes, display);
 };
+
+

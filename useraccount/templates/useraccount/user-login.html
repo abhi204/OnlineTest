@@ -1,0 +1,42 @@
+{% extends 'base_user_register.html'%}
+{% load static %}
+
+{% block title %}
+ SignUp
+{% endblock %}
+
+{% block body %}
+<main role="main" class="flex-shrink-0">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div id="card-candidate-details" class="card shadow">
+                <div class="card-header">
+                  <h3><i class="fas fa-keyboard"></i><b><span> Candidate Login</span></b></h3>
+                </div>
+                <div class="card-body">
+                  <form id="candidate-login-form" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="">Phone Number:</label>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="candidate-phone" placeholder="Enter your phone number:" aria-label="Phone Number" aria-describedby="button-addon2">
+                      </div>
+                      <small  class="form-text text-muted">This email will be used for verification.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Password</label>
+                      <input type="password" class="form-control" name="candidate-password" id="" placeholder="Enter your password:">
+                    </div>
+                    <button type="button" class="btn color-theme" id="candidate-login-button">Continue</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+{% endblock %}
+{%block scripts%}
+<script src="{% static 'signup/candidateLogin.js' %}"></script>
+{%endblock%}

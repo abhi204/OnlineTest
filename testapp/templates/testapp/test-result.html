@@ -1,0 +1,75 @@
+{% extends 'base_test.html' %}
+{% load static%}
+{% block title%}{{course.name}}{% endblock %}
+{% block body %}
+
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="text-dark "><b>Thank You For Taking The Test!</b></h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div  class="col">
+        <div id="card-candidate-details" class="card shadow">
+
+          <div class="card-header">
+            <h3>RESULT</h3>
+          </div>
+          <div id="candidate-details-card-body" class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item ">
+                <div class="row">
+                <div class="col-2">
+                <b>Name: </b> 
+                </div>
+                <div class="col-10">
+                <span>{{ result.candidate.full_name }}</span>
+                </div>
+                </div>
+              </li>
+              <li class="list-group-item ">
+                <div class="row">
+                <div class="col-2">
+                <b>Email: </b> 
+                </div>
+                <div class="col-10">
+                <span>{{ result.candidate.email }}</span>
+                </div>
+                </div>
+              </li>
+              <li class="list-group-item ">
+                <div class="row">
+                <div class="col-2">
+                <b>Phone Number: </b> 
+                </div>
+                <div class="col-10">
+                <span>{{ result.candidate.mobile }}</span>
+                </div>
+                </div>
+              </li>
+              <li class="list-group-item ">
+                <div class="row">
+                <div class="col-2">
+                  <h3><b>Score: </b></h3> 
+                </div>
+                <div class="col-10">
+                  <h3><span class="badge badge-success"><b>{{ result.score }}/30</b></span></h3>
+                </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer ">
+            <a type="button" href="{% url 'logout' %}" class="btn btn-danger btn-test">Exit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

@@ -74,3 +74,19 @@ def get_questions(request,course_name):
         questions_random = random.sample(all_questions,30 if len(all_questions)>30 else len(all_questions))
 
         return JsonResponse(questions_random, safe=False)
+
+
+def select_course(request):
+    if request.method == "POST":
+        pass
+    else:
+        courses = CourseModel.objects.all()
+        candidate_name = request.user.full_name
+        candidte_email = request.user.email
+        return render(request, "select-course.html", {"candidate-name": candidate_name, "courses": courses})
+
+
+def test_result(request, course_name):
+    test_result_instance = TestModel.objects.get(course_id=course_name, candidate_id=request.user.email)
+    if request.method == "GET":
+        return render(request, 'testapp/test-result.html', {'result': test_result_instance})

@@ -1,0 +1,31 @@
+{%extends 'base_test.html'%}
+{%block title%} Courses {%endblock%}
+
+{%block body%}
+<main role="main" class="flex-shrink-0">
+        <div class="container text-center">
+          <h1 class="text-dark"><b>WELCOME</b></h1>
+            <br>
+           <h3 class=""><span>{{ request.user.full_name }}</span></h3>
+        </div>
+        <div>
+            <div class="form-group mt-5">
+                <label for="course-options">Select Course</label>
+                <select class="form-control" id="course-options">
+                    {% for course in courses %}
+                    <option>{{ course.name }}</option>
+                    {% endfor %}
+                </select>
+                <button onclick="submit_course()" class="btn btn-primary mt-3">Submit</button>
+            </div>
+        </div>
+</main>
+ <script>
+
+    function submit_course(){
+    var option = document.getElementById("course-options");
+    var course_name = option.options[option.selectedIndex].value;
+    window.location = '/test/details/'+course_name;
+    }
+ </script>
+{%endblock%}

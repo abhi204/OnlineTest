@@ -5,7 +5,7 @@
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
   <div class="container text-center">
-    <h1 class="test-underline text-dark "><b>COURSE/TECHNOLOGY</b></h1>
+    <h1 class="test-underline text-dark "><b>{{ course.name }}</b></h1>
   </div>
   <div class="container">
     <div class="row">
@@ -31,20 +31,20 @@
                 <div id="choices">
                 <li class="list-group-item">
                   <div class="form-check">
-                    <input onclick="choiceClick(event)" class="form-check-input choice opt_a" name="choice" type="radio" value="" id="defaultCheck1">
+                    <input onclick="choiceClick(event)" class="form-check-input choice opt_a" name="choice" type="radio" value="" >
                     <label class="form-check-label" for="defaultCheck1" id="label_opt_a"></label>
                   </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                    <input onclick="choiceClick(event)" class="form-check-input choice opt_b" name="choice" type="radio" value="" id="defaultCheck1">
+                    <input onclick="choiceClick(event)" class="form-check-input choice opt_b" name="choice" type="radio" value="" >
                     <label class="form-check-label" for="defaultCheck1" id="label_opt_b">
                     </label>
                     </div>
                 </li>
                 <li class="list-group-item">
                   <div class="form-check">
-                    <input onclick="choiceClick(event)" class="form-check-input choice opt_c" name="choice" type="radio" value="" id="defaultCheck1">
+                    <input onclick="choiceClick(event)" class="form-check-input choice opt_c" name="choice" type="radio" value="" >
                     <label class="form-check-label" for="defaultCheck1" id="label_opt_c">
                     </label>
                   </div>
@@ -59,7 +59,7 @@
                 </li>
               </div>
                 <li class="list-group-item" id="text-input">
-                  <label class="form-check-label" for="answer">
+                  <label class="form-check-label" for="user-answer">
                     Answer
                   </label>
                   <input type="text" class="form-control" id="user-answer" onchange="changeAnswer(event)">
