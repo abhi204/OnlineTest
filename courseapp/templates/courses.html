@@ -24,6 +24,10 @@
                     <input type="text" class="form-control" id="addCourseName" name="name" placeholder="Enter the new course" required>
                   </div>
                   <div class="form-group text-left">
+                    <label for="addCourseDescription">Enter the Course Description:</label>
+                    <textarea  class="form-control" id="addCoursedescription" name="description" placeholder="Enter the course description" required></textarea>
+                  </div>
+                  <div class="form-group text-left">
                     <label for="addCourseName">Enter the Course Content:</label>
                     <textarea  class="form-control" id="addCourseContent" name="content" placeholder="Enter the course content" required></textarea>
                   </div>
@@ -56,7 +60,7 @@
                 {{ course.name }}
               </div>
               <div class="col-1">
-              <i class="fas fa-pen click-icon" data-toggle="modal" data-target="#editCourseModal" onclick="doEdit(event)" data-name="{{ course.name }}" data-content="{{ course.content }}" ></i>
+              <i class="fas fa-pen click-icon" data-toggle="modal" data-target="#editCourseModal" onclick="doEdit(event)" data-name="{{ course.name }}" data-content="{{ course.content }}" data-description="{{ course.description }}" ></i>
               </div>
               <div class="col-1">
               <a class="fas fa-trash" href="/course/delete/{{ course.name }}"></a>
@@ -85,7 +89,11 @@
                     <input type="text" class="form-control" id="editCourseName" name="name" placeholder="Enter the new course" hidden>
                   </div>
                   <div class="form-group text-left">
-                    <label for="editcourseName">Enter the Course Content:</label>
+                    <label for="editCourseDescription">Enter the Course Description:</label>
+                    <textarea  class="form-control" id="editCourseDescription" name="description" placeholder="Enter the course description"></textarea>
+                  </div>
+                  <div class="form-group text-left">
+                    <label for="editCourseContent">Enter the Course Content:</label>
                     <textarea  class="form-control" id="editCourseContent" name="content" placeholder="Enter the course content"></textarea>
                   </div>
               </div>
@@ -102,9 +110,10 @@
       
       <script>
         function doEdit(event) {
-          const { name, content } = event.target.dataset;
+          const { name, description, content } = event.target.dataset;
           document.querySelector("#OldCourseName").value = name;
           document.querySelector("#editCourseName").value = name;
+          document.querySelector("#editCourseDescription").value = description;
           document.querySelector("#editCourseContent").value = content;
         };
 

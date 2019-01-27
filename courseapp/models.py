@@ -2,8 +2,10 @@ from django.db import models
 from useraccount.models import User
 # Create your models here.
 
+
 class CourseModel(models.Model):
     name = models.CharField(max_length=100, primary_key=True, verbose_name="Course Name")
+    description = models.TextField(verbose_name="Course Content")
     content = models.TextField(verbose_name="Course Content")
 
     class Meta:
@@ -12,6 +14,7 @@ class CourseModel(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class QuestionModel(models.Model):
     q_id = models.CharField(max_length=10, primary_key=True, verbose_name="Question ID")
@@ -30,6 +33,7 @@ class QuestionModel(models.Model):
         if len(McqQuestionModel.objects.filter(pk=self.pk)):
             return "mcq"
         return "sub"
+
 
 class SubQuestionModel(QuestionModel):
     
