@@ -1,6 +1,7 @@
 from courseapp.models import QuestionModel
 from django.http import JsonResponse
 
+
 def get_score(answers):
     score = 0
     for answer in answers:
@@ -9,7 +10,9 @@ def get_score(answers):
         except QuestionModel.DoesNotExist:
             raise JsonResponse({"response": "Question Does Not Exist"})
         if answer['answer'] == question.answer:
-            score+=2
+            score +=2
+        elif answer['answer'] == '':
+            score += 0
         else:
-            score-=1
+            score -= 1
     return score

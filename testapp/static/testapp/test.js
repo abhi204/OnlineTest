@@ -40,10 +40,7 @@ function updateChoices(){
 }
 
 function nextQ(){
-    if(!answer)
-    {
-        return;
-    }
+    
 
     answers.push(
         {
@@ -139,5 +136,12 @@ window.onload = function () {
     display = document.querySelector('#test_timer');
     startTimer(Minutes, display);
 };
+
+
+if (performance.navigation.type == 1) {
+    submitAnswers();
+} else {
+    console.info( "This page is not reloaded");
+}
 
 
