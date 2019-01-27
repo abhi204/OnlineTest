@@ -26,19 +26,27 @@ def test_detail(request, course_name):
 @login_required
 @csrf_exempt
 def take_test(request, course_name):
+    #if request.method == "GET":
+    #    instance, created = TestModel.objects.get_or_create(
+    #        course_id=course_name,
+    #        candidate_id=request.user.email,
+    #        defaults={
+    #            "candidate_id": request.user.email,
+    #            "course_id": course_name,
+    #        })
+    #    if not created:
+    #        instance.test_start_time = timezone.now()
+    #        instance.score = 0
+    #    instance.save()
+    #    return render(request, "testapp/test.html", {"course": course_name})
     if request.method == "GET":
-        instance, created = TestModel.objects.get_or_create(
-            course_id=course_name,
-            candidate_id=request.user.email,
-            defaults={
-                "candidate_id": request.user.email,
-                "course_id": course_name,
-            })
-        if not created:
-            instance.test_start_time = timezone.now()
-            instance.score = 0
-        instance.save()
-        return render(request, "testapp/test.html", {"course": course_name})
+        instance = TestModel.objects.filter(course_id= course_name, candidate_id = request.user.email).exists()
+        if not instance:
+            instance_create = TestModel.objects.create(course_id= course_name, candidate_id = request.user.email)
+            instance_create.save()
+            return render(request, "testapp/test.html", {"course": course_name})
+        else:
+            return render(request, "testapp/test_taken.html", {"course": course_name})
     if request.method == "POST":
         answers = json.loads(request.body)
         instance, created = TestModel.objects.get_or_create(course_id=course_name, candidate_id=request.user.email)
