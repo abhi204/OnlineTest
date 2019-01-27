@@ -1,13 +1,13 @@
 {% extends 'base_test.html' %}
 {% load static %}
-{% block title %}Test - {{ course.name }} {% endblock %}
+{% block title %}Test - {{ course }} {% endblock %}
 
 {% block body %}
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
    <div class="container">
   <div class="alert alert-danger" role="alert">
-  You have already taken the test for {{ course.name }}. Please select another test.
+  You have already taken the test for {{ course }}. Please select another test.
   <br>
    <button type="button" class="btn btn-success mt-2" onclick="window.location = '/useraccount/courses'">Go Back</button>
   </div>

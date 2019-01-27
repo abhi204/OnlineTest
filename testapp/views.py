@@ -40,9 +40,9 @@ def take_test(request, course_name):
     #    instance.save()
     #    return render(request, "testapp/test.html", {"course": course_name})
     if request.method == "GET":
-        instance = TestModel.objects.filter(course_id= course_name, candidate_id = request.user.email).exists()
+        instance = TestModel.objects.filter(course_id=course_name, candidate_id=request.user.email).exists()
         if not instance:
-            instance_create = TestModel.objects.create(course_id= course_name, candidate_id = request.user.email)
+            instance_create = TestModel.objects.create(course_id=course_name, candidate_id=request.user.email)
             instance_create.save()
             return render(request, "testapp/test.html", {"course": course_name})
         else:
