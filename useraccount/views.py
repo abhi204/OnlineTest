@@ -53,10 +53,11 @@ def candidate_login_view(request):
 def signup_view(request):
     if request.method == "POST":
         signup_form = SignUpForm(request.POST)
+        if User.objects.filter(pk=request.POST['email']).exists():
+            return HttpResponse(json.dumps({'response':'exists'}), content_type="application/json")
         if signup_form.is_valid():
             user = signup_form.save(commit=False)
             user.is_active = False
-
             current_site = get_current_site(request)
             mail_subject = 'Activate your user account.'
             message = render_to_string('acc_active_email.html', {

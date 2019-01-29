@@ -22,9 +22,13 @@ async function doSignUp() {
         // Do Something on successful account initialization 
         //(verification still pending)
         elem.style.display = 'none';
-        window.alert("Thank You For Registering. \n Please verify your specified email account and then login.");
-        window.location = "/";
-    } 
+        //window.alert("Thank You For Registering. \n Please verify your specified email account and then login.");
+        window.location = "/useraccount/success";
+    }
+    else if(signupResponse.response === "exists")
+    {
+        window.alert("User already exists, Please try again.");
+    }
     else if(signupResponse.response === "error")
     {
         //Unable to initialize account

@@ -1,0 +1,20 @@
+{% extends 'base_user_register.html' %}
+{% load static %}
+{% block title %}Test - {{ course }} {% endblock %}
+
+{% block body %}
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+   <div class="container">
+  <div class="alert alert-success" role="alert">
+    <h1>THANK YOU FOR REGISTERING!</h1>
+    <p>A verification mail has been sent to your specified email.</p>
+    <p>Please activate your account and take the test. </p>
+  <br>
+   <button type="button" class="btn btn-success mt-2" onclick="window.location = '/'">Go Back</button>
+  </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block script %}{% endblock %}
