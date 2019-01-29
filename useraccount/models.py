@@ -62,7 +62,7 @@ class User(AbstractBaseUser):
     college = models.CharField(max_length=255)
     department = models.CharField(max_length=255)
     sem = models.IntegerField()
-    active = models.BooleanField(default=True)
+    active = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
     #course_id

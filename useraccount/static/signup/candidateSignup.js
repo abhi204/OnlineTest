@@ -5,6 +5,8 @@ async function doSignUp() {
     let jsForm = new FormData(htmlSignupForm);
     // Add HTML error display element here
 
+    var elem = document.getElementById('loader');
+    elem.style.display = 'block';
     await fetch(
         "/useraccount/create/candidate",
         {
@@ -19,14 +21,15 @@ async function doSignUp() {
     {
         // Do Something on successful account initialization 
         //(verification still pending)
-        window.alert("SUCCESS!!!");
+        elem.style.display = 'none';
+        window.alert("Thank You For Registering. \n Please verify your specified email account and then login.");
         window.location = "/";
     } 
     else if(signupResponse.response === "error")
     {
         //Unable to initialize account
         //Display error message appropriately
-        window.alert(signupResponse.errors);
+        window.alert("Please check your details. And try again.");
         // error text is available as signupResponse.errors.{error}.toString()
     }
     else

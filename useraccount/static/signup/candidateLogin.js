@@ -20,7 +20,6 @@ async function doCandidateLogin() {
     {
         // Do Something on successful account initialization
         //(verification still pending)
-        window.alert("SUCCESS!!!");
         window.location = "/useraccount/courses/";
     }
     else if(candidateLoginResponse.error)

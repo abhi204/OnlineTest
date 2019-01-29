@@ -67,15 +67,20 @@ class SignUpForm(UserCreationForm):
     in case of error.
     '''
     @transaction.atomic
-    def save(self):
-        user = self.instance
-        user.set_password(self.cleaned_data['password1'])
-        user.save()
+    def save(self, commit=True):
+
         # student = Student.objects.create(
         #     user = user,
         #     usn = self.cleaned_data['usn'],
         #     year = self.cleaned_data['year'],
         #     cr = self.cleaned_data['cr']
         #     )
+        if commit:
+            user = self.instance
+            user.set_password(self.cleaned_data['password1'])
+            user.save()
+        else:
+            user = self.instance
+            user.set_password(self.cleaned_data['password1'])
         return user
 

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import json
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -138,3 +139,11 @@ ERROR_RESPONSE = {
         "content":json.dumps({'response':'unknownError'}),
      "content_type":"application/json"
      }
+
+EMAIL_HOST = socket.gethostbyname('smtp.gmail.com')
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'yashguptaspark@gmail.com'
+EMAIL_HOST_PASSWORD = 'sssya2998'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'yashguptaspark@gamil.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
